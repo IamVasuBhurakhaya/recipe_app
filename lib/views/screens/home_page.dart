@@ -14,6 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String selected = "All";
+  String selectedDifficulty = "AllLevel";
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +33,14 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {
                 Navigator.of(context).pushNamed('meal_page');
               },
-              icon: Icon(Icons.foggy)),
-          SizedBox(
+              icon: const Icon(Icons.foggy)),
+          const SizedBox(
             width: 10,
           ),
-          Icon(Icons.favorite_rounded),
+          const Icon(Icons.favorite_rounded),
+          const SizedBox(
+            width: 16,
+          ),
         ],
       ),
       body: Padding(
@@ -45,30 +49,74 @@ class _HomePageState extends State<HomePage> {
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              DropdownButton(
-                value: selected,
-                onChanged: (val) {
-                  setState(
-                    () {
-                      selected = val.toString();
-                    },
-                  );
-                },
-                items: [
-                  const DropdownMenuItem(
-                    value: "All",
-                    child: Text("All Times"),
-                  ),
-                  ...allTimes.map(
-                    (e) => DropdownMenuItem(
-                      value: e,
-                      child: Text(e),
+              Row(
+                children: [
+                  //cuisine
+                  DropdownButton(
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(
+                        10,
+                      ),
                     ),
-                  )
+                    padding: const EdgeInsets.all(3),
+                    value: selected,
+                    onChanged: (val) {
+                      setState(() {
+                        selected = val.toString();
+                      });
+                    },
+                    items: [
+                      const DropdownMenuItem(
+                        value: "All",
+                        child: Text("All Cuisine"),
+                      ),
+                      ...allCuisine.map(
+                        (e) => DropdownMenuItem(
+                          value: e,
+                          child: Text(e),
+                        ),
+                      ),
+                    ],
+                  ),
+                  //difficulty
+                  Visibility(
+                    visible: selected != "All",
+                    child: DropdownButton(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(
+                          10,
+                        ),
+                      ),
+                      // focusColor: Colors.green,
+                      padding: const EdgeInsets.all(3),
+                      value: selectedDifficulty,
+                      onChanged: (val) {
+                        setState(() {
+                          selectedDifficulty = val.toString();
+                        });
+                      },
+                      items: [
+                        const DropdownMenuItem(
+                          value: "AllLevel",
+                          child: Text("Difficulty Level"),
+                        ),
+                        ...allDifficulty.map(
+                          (e) => DropdownMenuItem(
+                            value: e,
+                            child: Text(e),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
               Column(
-                children: allRecipies
+                children: allRecipes
+                    .where((e) => selected == "All"
+                        ? true
+                        : selected == e['cuisine'] &&
+                            selectedDifficulty == e['difficulty'])
                     .map(
                       (e) => GestureDetector(
                         onTap: () {
@@ -168,14 +216,15 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                               ),
-                              Align(
-                                alignment: Alignment.bottomRight,
+                              Positioned(
+                                bottom: 16,
+                                right: 16,
                                 child: Container(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 6, vertical: 2),
                                     decoration: BoxDecoration(
                                       color: Colors.black.withOpacity(0.7),
-                                      borderRadius: BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.circular(16),
                                     ),
                                     child: IconButton(
                                       onPressed: () {
@@ -184,27 +233,9 @@ class _HomePageState extends State<HomePage> {
                                           e['qty'] = 1;
                                         });
                                       },
-                                      icon: Icon(Icons.add),
+                                      icon: const Icon(Icons.add),
                                       color: Colors.white,
                                     )),
-                              ),
-                              Align(
-                                alignment: Alignment.topLeft,
-                                child: RatingBar.builder(
-                                  initialRating: 3,
-                                  minRating: 1,
-                                  direction: Axis.horizontal,
-                                  allowHalfRating: true,
-                                  itemCount: 5,
-                                  itemSize: 18,
-                                  itemPadding:
-                                      EdgeInsets.symmetric(horizontal: 4.0),
-                                  itemBuilder: (context, _) => Icon(
-                                    Icons.star,
-                                    color: Colors.amber,
-                                  ),
-                                  onRatingUpdate: (rating) {},
-                                ),
                               ),
                             ],
                           ),

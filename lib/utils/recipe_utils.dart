@@ -1,4 +1,4 @@
-List<Map<String, dynamic>> allRecipies = [
+List<Map<String, dynamic>> allRecipes = [
   {
     "id": 1,
     "name": "Classic Margherita Pizza",
@@ -1053,9 +1053,23 @@ List<Map<String, dynamic>> allRecipies = [
   }
 ];
 
-List<String> allTimes = allRecipies
+List<String> allTimes = allRecipes
     .map(
       (e) => e['mealType'].toString(),
+    )
+    .toSet()
+    .toList();
+
+List<String> allCuisine = allRecipes
+    .map(
+      (e) => e['cuisine'].toString(),
+    )
+    .toSet()
+    .toList();
+
+List<String> allDifficulty = allRecipes
+    .map(
+      (e) => e['difficulty'].toString(),
     )
     .toSet()
     .toList();
