@@ -1,16 +1,45 @@
-# recipe_app
+# Recipe App
 
-A new Flutter project.
+## Overview
 
-## Getting Started
+This recipe app allows users to browse, filter, and manage recipes through a user-friendly interface. The app provides functionalities to add recipes to meals, mark them as favorites, and manage them in an organized manner.
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+### HomePage
+- **Display:** Shows all recipes in an aesthetically pleasing and organized UI.
+- **Events:**
+  - **Go to Detail Page:** Navigate to the Detail Page of the selected recipe.
+  - **Add to Meal:** Add the recipe to the Meal Page.
+  - **Add to Favourite:** Mark the recipe as a favorite and add it to the Favourite Page.
+- **Filters:** Users can filter recipes by:
+  - **Tags**
+  - **Meal Type**
+  - **Prep + Cooking Time**
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### DetailPage
+- **Display:** Shows the detailed information of the selected recipe, including all available data.
+  - **Ingredients and Instructions:** Only the count of ingredients and instructions is displayed.
+- **Events:**
+  - **Add to Meal:** Add the recipe to the Meal Page.
+  - **Add to Favourite:** Mark the recipe as a favorite and add it to the Favourite Page.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### RecipePage
+- **Display:** Focuses on displaying the recipe's ingredients and instructions in detail.
+- **Events:**
+  - **Add to Meal:** Add the recipe to the Meal Page.
+  - **Add to Favourite:** Mark the recipe as a favorite and add it to the Favourite Page.
+
+### MealPage
+- **Display:** Functions similarly to a cart page, listing all recipes added to the meal.
+  - **Total Calculation:** Automatically calculates the total time, calories, and servings of all recipes in the meal.
+- **Events:**
+  - **Add to Favourite:** Mark the recipe as a favorite and add it to the Favourite Page.
+  - **Remove from Meal Page:** Remove the recipe from the Meal Page.
+  - **Increase/Decrease Servings:** Adjust the number of servings for the selected recipe.
+
+### FavouritePage
+- **Display:** Lists all recipes marked as favorites.
+- **Events:**
+  - **Remove from Favourite:** Unmark the recipe as a favorite and remove it from the Favourite Page.
+
