@@ -42,4 +42,19 @@ This recipe app allows users to browse, filter, and manage recipes through a use
 - **Display:** Lists all recipes marked as favorites.
 - **Events:**
   - **Remove from Favourite:** Unmark the recipe as a favorite and remove it from the Favourite Page.
+ 
+### Output
 
+- **Images**:
+
+<img src="https://github.com/user-attachments/assets/2bf0da3f-fdbf-40c1-a132-7a2259dbfa1c" height=600 width=300 > 
+
+<img src="https://github.com/user-attachments/assets/cbf45811-eb37-40c4-93fe-f1c2262bd681" height=600 width=300 >
+
+<img src="https://github.com/user-attachments/assets/d7cd38fc-c882-4e05-8d24-ad1f5fb00975" height=600 width=300 >
+
+<img src="https://github.com/user-attachments/assets/bc301f7a-0977-46ec-94ac-4b191c6269b8" height=600 width=300 >
+
+<img src="https://github.com/user-attachments/assets/d8f5ad35-126d-4760-acba-d84e691ae34b" height=600 width=300 >
+
+<img src="https://github.com/user-attachments/assets/a8865ade-0c77-468d-98b2-30ccdfa1a22b" height=600 width=300 >
